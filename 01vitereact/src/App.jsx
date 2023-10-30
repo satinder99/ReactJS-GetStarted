@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import SayHello from "./sayHello"
 
 function App() {
   return (
-    <h1>Chai aur react with vite | Satinder</h1>
+    <>
+      <SayHello/>
+      <h1>Chai aur react with vite | Satinder</h1>
+    </>
   )
 }
 
