@@ -1,8 +1,15 @@
+import Sayhello from "./Sayhello"
+
+
 function App() {
-  return (
-    <h1>Chai aur React | Satinder: Notes:
-      we have created a new project using the react create-react-app utility
-    </h1>
+  console.log("hello")
+ return (
+    <>
+      <Sayhello />
+      <h1>Chai aur React | Satinder: Notes:
+        we have created a new project using the react create-react-app utility
+      </h1>
+    </>
   );
 }
 
