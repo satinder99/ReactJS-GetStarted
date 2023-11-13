@@ -3,6 +3,7 @@ import Layout from './Layout'
 import Home from './componenets/Home/Home'
 import About from './componenets/About/About'
 import Contact from './componenets/Contact/Contact'
+import Github from './componenets/Github/Github'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="about" element={<About/>}/>
           <Route path="contact" element={<Contact/>}/>
+          <Route path="github" element={<Github/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
