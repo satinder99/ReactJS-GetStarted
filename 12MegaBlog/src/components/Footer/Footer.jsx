@@ -1,0 +1,7 @@
+function Footer(){
+    return (
+        <div>Header</div>
+    )
+}
+
+export default Footer;
