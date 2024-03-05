@@ -1,5 +1,3 @@
-console.log(String(import.meta.env.VITE_APPWRITE_URL))
-
 const conf = {
     
     appwriteUrl : String(import.meta.env.VITE_APPWRITE_URL),

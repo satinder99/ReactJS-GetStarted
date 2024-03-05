@@ -9,6 +9,8 @@ function Signup() {
 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const [error, setError] = useState("")
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -16,19 +18,30 @@ function Signup() {
         e.preventDefault();
         console.log("Inside signup.jsx : email is : ",email," Password is : ",password)
         const userData = authService.createAccount({email,password})
-        
-        if(userData){
-            userData
-            .then((userData) => userData.json)
-            .then(
-                dispatch(login(userData))
+        userData
+            .then((userData) => {
+                if(userData.userId){
+                    dispatch(login(userData))
+                    navigate("/")
+                }
+                else{
+                    const errorMsg = (String(userData)).split("\n");
+                    setError(errorMsg[0])
+                }
+            })
+            .catch((error) => {
+                const errorMsg = (String(error)).split("\n");
+                setError(errorMsg)
+                }
             )
-
-            navigate("/")
+            
         }
-    }
+    
   return (
     <>
+        <div>
+            {error && <h3 className='text-red-500'> Errors: {error}</h3>}
+        </div>
         <form onSubmit={handleSignup}>
             <Input 
                 label="Email" 

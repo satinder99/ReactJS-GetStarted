@@ -3,11 +3,12 @@ import { useSelector } from 'react-redux'
 
 function Home() {
   const isLoggedIn = useSelector((state) => state.auth.status)
-  console.log("isLogged in ?? ",isLoggedIn)
   return (
     <>
-      {isLoggedIn ? 
+      {isLoggedIn? <>
         <h2>Thanks for looging in !! All post are available</h2>
+        
+        </>
         :
         <h2>Login to read post</h2> }
     </>

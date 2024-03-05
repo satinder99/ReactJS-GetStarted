@@ -4,11 +4,9 @@ import App from './App.jsx'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
-import Home from './pages/Home.jsx'
-import Login from './pages/Login.jsx'
+import {Home, Login, Logout, Signup} from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
-import Signup from './pages/Signup.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,12 +24,14 @@ const router = createBrowserRouter([
       {
         path:"signup",
         element:<Signup/>
+      },
+      {
+        path:"logout",
+        element:<Logout/>
       }
     ]
   }
 ])
-
-console.log("appjsx",import.meta.env.VITE_APPWRITE_URL)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

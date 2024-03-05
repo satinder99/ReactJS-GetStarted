@@ -10,18 +10,16 @@ export class AuthService {
             .setProject("6562ed05ae63ce4fdc18");
         this.account = new Account(this.client);
 
-        console.log("endpoint : ", conf.appwriteUrl);
     }
 
 
     async createAccount({email,password}){
         try {
-            console.log("Inside createAccount : email is : ",email," Password is : ",password)
             const userAccount = await this.account.create(ID.unique(), email,password)
-            console.log("userAccount from appwrite : ",userAccount);
             if(userAccount) return this.login({email,password})
         } catch (error) {
             console.log("AuthService :: createAccount() :: Error : ", error)
+            return error
         }
         
         return null
@@ -30,12 +28,32 @@ export class AuthService {
     async login({email,password}){
         try {
             const session = await this.account.createEmailSession(email,password);
-            console.log("Login session in appwrite ", session);
-            if(session) return session;
+            if(session) {
+                return session;
+            }
         } catch (error) {
             console.log("AuthService :: login() :: Error : ", error)
+            return error
         }
         return null;
+    }
+    async logout(){
+        try{ 
+            return await this.account.deleteSessions()
+        }
+        catch(error){
+            console.log("AuthService :: logout() :: Error : ", error)
+            return error
+        }
+    }
+
+    async getCurrentUser(){
+        try {
+            return await this.account.get()
+        } catch (error) {
+            console.log("AuthService :: getCurrentUser() :: Error : ", error)
+            return error
+        }
     }
 }
 
