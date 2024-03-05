@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 function Header() {
   let authStatus = useSelector((state) => state.auth.status);
-  
+  console.log("i am re-render",Date.now());
     const navItems = [
         {
             name:"Home",

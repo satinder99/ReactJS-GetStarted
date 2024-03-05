@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Logout() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
     const deletedSession = authservice.logout()
     deletedSession.then( session => {
       if(session.message == "")
@@ -14,7 +16,7 @@ function Logout() {
       }
     }
     )
-    useDispatch(logout())
+    dispatch(logout())
   return (
     <div>Loging you out, please wait</div>
   )
